@@ -18,6 +18,42 @@ MODEL_PATH = ARTIFACT_DIR / "model.json"
 METADATA_PATH = ARTIFACT_DIR / "metadata.json"
 
 
+EXPECTED_FEATURES = [
+    "Time",
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "V6",
+    "V7",
+    "V8",
+    "V9",
+    "V10",
+    "V11",
+    "V12",
+    "V13",
+    "V14",
+    "V15",
+    "V16",
+    "V17",
+    "V18",
+    "V19",
+    "V20",
+    "V21",
+    "V22",
+    "V23",
+    "V24",
+    "V25",
+    "V26",
+    "V27",
+    "V28",
+    "Amount",
+]
+
+EXPECTED_THRESHOLD = 0.66275984
+
+
 # ============================================================
 # TESTES DE ARQUIVOS
 # ============================================================
@@ -77,7 +113,7 @@ def test_loaded_model_is_xgboost_classifier():
 
     assert isinstance(
         model,
-        XGBClassifier
+        XGBClassifier,
     )
 
 
@@ -99,40 +135,7 @@ def test_model_features():
 
     assert len(features) == 30
 
-    expected_features = [
-        "Time",
-        "V1",
-        "V2",
-        "V3",
-        "V4",
-        "V5",
-        "V6",
-        "V7",
-        "V8",
-        "V9",
-        "V10",
-        "V11",
-        "V12",
-        "V13",
-        "V14",
-        "V15",
-        "V16",
-        "V17",
-        "V18",
-        "V19",
-        "V20",
-        "V21",
-        "V22",
-        "V23",
-        "V24",
-        "V25",
-        "V26",
-        "V27",
-        "V28",
-        "Amount",
-    ]
-
-    assert features == expected_features
+    assert features == EXPECTED_FEATURES
 
 
 # ============================================================
@@ -166,11 +169,11 @@ def test_model_threshold():
 
     assert isinstance(
         threshold,
-        float
+        float,
     )
 
     assert threshold == pytest.approx(
-        0.66275984
+        EXPECTED_THRESHOLD,
     )
 
 
@@ -181,37 +184,27 @@ def test_model_threshold():
 def test_loaded_model_can_predict():
     """
     Verifica se o modelo carregado consegue
-    executar predict_proba sem realizar treinamento.
+    executar predict_proba sem realizar treinamento
+    e sem depender do dataset original.
     """
 
     import pandas as pd
-
-    dataset_path = (
-        PROJECT_ROOT
-        / "data"
-        / "processed"
-        / "dataset_processado.csv"
-    )
-
-    assert dataset_path.exists(), (
-        f"Dataset não encontrado: {dataset_path}"
-    )
-
-    df = pd.read_csv(
-        dataset_path,
-        nrows=5
-    )
 
     loader = ModelLoader().load()
 
     features = loader.get_features()
 
-    X = df[features]
+    data = {
+        feature: [0.0] * 5
+        for feature in features
+    }
+
+    df = pd.DataFrame(data)
 
     probabilities = (
         loader
         .get_model()
-        .predict_proba(X)[:, 1]
+        .predict_proba(df[features])[:, 1]
     )
 
     assert len(probabilities) == 5
