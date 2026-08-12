@@ -1,6 +1,10 @@
 # 🛡️ Fraud Detection — Machine Learning API
 
 [![CI](https://github.com/jefersonsilva344/fraud-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/jefersonsilva344/fraud-detection/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.14-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-REST-009688)
+![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED)
+![Coverage](https://img.shields.io/badge/Coverage-82.14%25-brightgreen)
 
 Sistema de detecção de transações fraudulentas desenvolvido em Python, combinando **Machine Learning, experimentação rigorosa, otimização de threshold, API REST, testes automatizados e containerização com Docker**.
 
