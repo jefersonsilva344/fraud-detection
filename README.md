@@ -1,5 +1,7 @@
 # 🛡️ Fraud Detection — Machine Learning API
 
+[![CI](https://github.com/jefersonsilva344/fraud-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/jefersonsilva344/fraud-detection/actions/workflows/ci.yml)
+
 Sistema de detecção de transações fraudulentas desenvolvido em Python, combinando **Machine Learning, experimentação rigorosa, otimização de threshold, API REST, testes automatizados e containerização com Docker**.
 
 O projeto foi desenvolvido com foco não apenas no treinamento de modelos, mas também em **engenharia de software e disponibilização do modelo para inferência através de uma API**.
