@@ -66,7 +66,7 @@ data/processed/
 # Datasets
 *.csv
 *.parquet
-*.json
+data/**/*.json
 *.xlsx
 
 # ============================================================
@@ -86,10 +86,25 @@ data/processed/
 # ============================================================
 
 models/
+
 *.pkl
 *.pickle
 *.joblib
 *.onnx
+
+# ============================================================
+# ARTEFATOS DE MACHINE LEARNING
+# ============================================================
+
+# Ignora artefatos por padrão para evitar versionar
+# modelos grandes ou arquivos gerados automaticamente.
+
+artifacts/*
+
+# Modelo utilizado pela API
+!artifacts/xgboost/
+!artifacts/xgboost/model.json
+!artifacts/xgboost/metadata.json
 
 # ============================================================
 # LOGS
