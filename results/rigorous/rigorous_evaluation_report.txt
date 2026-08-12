@@ -1,0 +1,46 @@
+AVALIAÇÃO RIGOROSA - ISOLATION FOREST
+======================================================================
+
+METODOLOGIA
+Train: 70%
+Validation: 15%
+Test: 15%
+
+CONFIGURAÇÃO SELECIONADA
+Contamination: 0.001
+Threshold: 0.64821070
+
+VALIDATION
+Precision: 0.2113
+Recall: 0.2113
+F1-score: 0.2113
+ROC-AUC: 0.9281
+PR-AUC: 0.0930
+
+TEST - AVALIAÇÃO FINAL
+Precision: 0.2262
+Recall: 0.2676
+F1-score: 0.2452
+ROC-AUC: 0.9535
+PR-AUC: 0.1307
+
+MATRIZ DE CONFUSÃO - TEST
+[[42423    65]
+ [   52    19]]
+
+True Negatives: 42423
+False Positives: 65
+False Negatives: 52
+True Positives: 19
+
+MÉTRICAS OPERACIONAIS
+False Positive Rate: 0.1530%
+False Negative Rate: 73.2394%
+Fraud Detection Rate: 26.7606%
+
+BASELINE
+Fraud rate no Test: 0.1668%
+Fraudes no Test: 71
+Fraudes detectadas: 19
+Fraudes perdidas: 52
+Falsos positivos: 65

@@ -1,0 +1,2 @@
+model,contamination,n_neighbors,precision,recall,f1_score,roc_auc,pr_auc,false_positive_rate,false_negative_rate,true_negatives,false_positives,false_negatives,true_positives
+Local Outlier Factor,0.01,20,0.0011148272017837235,0.007042253521126761,0.0019249278152069298,0.5246192959868039,0.0022120179405714854,0.010544153643381661,0.9929577464788732,84080,896,141,1

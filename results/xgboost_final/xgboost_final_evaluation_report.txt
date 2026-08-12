@@ -1,0 +1,39 @@
+==================================================
+RELATÓRIO DE AVALIAÇÃO - XGBOOST FINAL
+==================================================
+
+Registros totais: 283726
+Features: 30
+Train: 198608
+Validation: 42559
+Test: 42559
+
+Scale pos weight: 599.024200
+Threshold congelado: 0.66275984
+
+VALIDATION
+ROC-AUC: 0.972303
+PR-AUC: 0.846746
+Precision: 0.965517
+Recall: 0.788732
+F1-score: 0.868217
+
+TEST
+ROC-AUC: 0.962766
+PR-AUC: 0.820199
+Precision: 0.890625
+Recall: 0.802817
+F1-score: 0.844444
+False Positive Rate: 0.000165
+False Negative Rate: 0.197183
+Fraud Detection Rate: 0.802817
+
+MATRIZ DE CONFUSÃO
+TN: 42481
+FP: 7
+FN: 14
+TP: 57
+
+ARTIFACTS
+Model: C:\Users\jefco\fraud-detection\artifacts\xgboost\model.json
+Metadata: C:\Users\jefco\fraud-detection\artifacts\xgboost\metadata.json

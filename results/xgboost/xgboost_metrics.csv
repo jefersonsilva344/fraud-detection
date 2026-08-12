@@ -1,0 +1,2 @@
+model,threshold,scale_pos_weight,precision,recall,f1_score,roc_auc,pr_auc,false_positive_rate,false_negative_rate,fraud_detection_rate,true_negatives,false_positives,false_negatives,true_positives
+XGBoost,0.966442,599.02416918429,0.9482758620689655,0.7746478873239436,0.8527131782945736,0.9651434307217813,0.8148041294898283,7.060817171907362e-05,0.22535211267605634,0.7746478873239436,42485,3,16,55

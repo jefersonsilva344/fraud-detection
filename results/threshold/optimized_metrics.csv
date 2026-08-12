@@ -1,0 +1,2 @@
+model,contamination,threshold,precision,recall,f1_score,roc_auc,pr_auc,false_positive_rate,false_negative_rate,true_negatives,false_positives,false_negatives,true_positives
+Isolation Forest,0.002,0.6457016366799627,0.2215568862275449,0.2605633802816901,0.23948220064724918,0.9406790251961781,0.10828459347693904,0.0015298437205799285,0.7394366197183099,84846,130,105,37

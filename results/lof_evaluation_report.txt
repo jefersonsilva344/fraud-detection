@@ -1,0 +1,38 @@
+AVALIAÇÃO - LOCAL OUTLIER FACTOR
+============================================================
+
+Contamination: 0.01
+N Neighbors: 20
+Random State: 42
+Features: 30
+Treino: 198608
+Teste: 85118
+
+MATRIZ DE CONFUSÃO
+[[84080   896]
+ [  141     1]]
+
+True Negatives: 84080
+False Positives: 896
+False Negatives: 141
+True Positives: 1
+
+MÉTRICAS
+Precision: 0.0011
+Recall: 0.0070
+F1-score: 0.0019
+ROC-AUC: 0.5246
+PR-AUC: 0.0022
+False Positive Rate: 1.0544%
+False Negative Rate: 99.2958%
+Fraud Detection Rate: 0.7042%
+
+CLASSIFICATION REPORT
+              precision    recall  f1-score   support
+
+    Legítima       1.00      0.99      0.99     84976
+      Fraude       0.00      0.01      0.00       142
+
+    accuracy                           0.99     85118
+   macro avg       0.50      0.50      0.50     85118
+weighted avg       1.00      0.99      0.99     85118

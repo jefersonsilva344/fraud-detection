@@ -1,0 +1,72 @@
+======================================================================
+RELATÓRIO FINAL — DETECÇÃO DE FRAUDES
+======================================================================
+
+Os resultados apresentados neste relatório pertencem exclusivamente ao conjunto TEST.
+
+RANKING DOS MODELOS
+----------------------------------------------------------------------
+
+1. XGBoost Tuned
+   Precision: 0.8906
+   Recall:    0.8028
+   F1-score:  0.8444
+   ROC-AUC:   0.9628
+   PR-AUC:    0.8202
+   FPR:       0.0165%
+   FNR:       19.7183%
+   Detection: 80.2817%
+   Threshold: 0.66275984
+
+2. XGBoost
+   Precision: 0.9483
+   Recall:    0.7746
+   F1-score:  0.8527
+   ROC-AUC:   0.9651
+   PR-AUC:    0.8148
+   FPR:       0.0071%
+   FNR:       22.5352%
+   Detection: 77.4648%
+   Threshold: 0.96644199
+
+3. Isolation Forest
+   Precision: 0.2216
+   Recall:    0.2606
+   F1-score:  0.2395
+   ROC-AUC:   0.9407
+   PR-AUC:    0.1083
+   FPR:       0.1530%
+   FNR:       73.9437%
+   Detection: 26.0563%
+   Threshold: 0.64570164
+
+4. LOF
+   Precision: 0.0011
+   Recall:    0.0070
+   F1-score:  0.0019
+   ROC-AUC:   0.5246
+   PR-AUC:    0.0022
+   FPR:       1.0544%
+   FNR:       99.2958%
+   Detection: 0.7042%
+   Threshold: 0.01000000
+
+======================================================================
+MELHOR MODELO
+======================================================================
+
+Modelo: XGBoost Tuned
+PR-AUC: 0.8202
+F1-score: 0.8444
+Recall: 0.8028
+Precision: 0.8906
+ROC-AUC: 0.9628
+Threshold: 0.66275984
+
+======================================================================
+CONCLUSÃO
+======================================================================
+
+O ranking foi definido prioritariamente por PR-AUC, seguido por F1-score e Recall.
+
+O XGBoost Tuned apresenta o melhor equilíbrio entre detecção de fraudes e controle de falsos positivos entre os modelos avaliados.

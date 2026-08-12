@@ -1,0 +1,31 @@
+OTIMIZAÇÃO DE THRESHOLD - ISOLATION FOREST
+============================================================
+
+Contamination: 0.002
+Threshold otimizado: 0.64570164
+
+MÉTRICAS
+Precision: 0.2216
+Recall: 0.2606
+F1-score: 0.2395
+ROC-AUC: 0.9407
+PR-AUC: 0.1083
+
+MATRIZ DE CONFUSÃO
+[[84846   130]
+ [  105    37]]
+
+TN: 84846
+FP: 130
+FN: 105
+TP: 37
+
+THRESHOLD PADRÃO
+Precision: 0.2090
+Recall: 0.2606
+F1-score: 0.2320
+
+THRESHOLD OTIMIZADO
+Precision: 0.2216
+Recall: 0.2606
+F1-score: 0.2395

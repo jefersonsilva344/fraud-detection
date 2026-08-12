@@ -1,0 +1,37 @@
+XGBOOST TUNING - RELATÓRIO FINAL
+============================================================
+
+CONFIGURAÇÃO SELECIONADA
+max_depth: 4
+learning_rate: 0.1
+n_estimators: 300
+min_child_weight: 1
+subsample: 0.8
+colsample_bytree: 0.8
+scale_pos_weight: 599.0242
+Threshold congelado: 0.66275984
+
+VALIDATION
+PR-AUC: 0.8467
+ROC-AUC: 0.9723
+Precision: 0.9655
+Recall: 0.7887
+F1-score: 0.8682
+
+TEST
+PR-AUC: 0.8202
+ROC-AUC: 0.9628
+Precision: 0.8906
+Recall: 0.8028
+F1-score: 0.8444
+
+MATRIZ DE CONFUSÃO
+TN: 42481
+FP: 7
+FN: 14
+TP: 57
+
+MÉTRICAS OPERACIONAIS
+FPR: 0.0165%
+FNR: 19.7183%
+Fraud Detection Rate: 80.2817%

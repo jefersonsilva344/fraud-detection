@@ -1,0 +1,17 @@
+COMPARAÇÃO DE MODELOS
+============================================================
+
+               model  contamination  precision   recall  f1_score  roc_auc   pr_auc  false_positive_rate  false_negative_rate  true_negatives  false_positives  false_negatives  true_positives
+    Isolation Forest          0.002   0.209040 0.260563  0.231975 0.940679 0.108285             0.001648             0.739437           84836              140              105              37
+Local Outlier Factor          0.010   0.001115 0.007042  0.001925 0.524619 0.002212             0.010544             0.992958           84080              896              141               1
+
+MELHOR MODELO
+Modelo: Isolation Forest
+Contamination: 0.002
+Precision: 0.2090
+Recall: 0.2606
+F1-score: 0.2320
+ROC-AUC: 0.9407
+PR-AUC: 0.1083
+False Positive Rate: 0.1648%
+False Negative Rate: 73.9437%

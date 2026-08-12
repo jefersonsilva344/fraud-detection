@@ -1,0 +1,7 @@
+-r requirements.txt
+
+pytest
+pytest-cov
+httpx2
+matplotlib
+seaborn

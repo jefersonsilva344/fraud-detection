@@ -1,0 +1,35 @@
+AVALIAÇÃO - ISOLATION FOREST
+============================================================
+
+Contamination: 0.002
+Random State: 42
+Features: 30
+Treino: 198608
+Teste: 85118
+
+MATRIZ DE CONFUSÃO
+[[84836   140]
+ [  105    37]]
+
+True Negatives: 84836
+False Positives: 140
+False Negatives: 105
+True Positives: 37
+
+MÉTRICAS
+Precision: 0.2090
+Recall: 0.2606
+F1-score: 0.2320
+False Positive Rate: 0.1648%
+False Negative Rate: 73.9437%
+Fraud Detection Rate: 26.0563%
+
+CLASSIFICATION REPORT
+              precision    recall  f1-score   support
+
+    Legítima       1.00      1.00      1.00     84976
+      Fraude       0.21      0.26      0.23       142
+
+    accuracy                           1.00     85118
+   macro avg       0.60      0.63      0.62     85118
+weighted avg       1.00      1.00      1.00     85118

@@ -1,0 +1,35 @@
+==================================================
+RELATÓRIO DE AVALIAÇÃO - XGBOOST
+==================================================
+
+Registros totais: 283726
+Features: 30
+Train: 198608
+Validation: 42559
+Test: 42559
+
+Scale pos weight: 599.024169
+Threshold otimizado: 0.96644199
+
+VALIDATION
+ROC-AUC: 0.975239
+PR-AUC: 0.843180
+Precision: 1.000000
+Recall: 0.746479
+F1-score: 0.854839
+
+TEST
+ROC-AUC: 0.965143
+PR-AUC: 0.814804
+Precision: 0.948276
+Recall: 0.774648
+F1-score: 0.852713
+False Positive Rate: 0.000071
+False Negative Rate: 0.225352
+Fraud Detection Rate: 0.774648
+
+MATRIZ DE CONFUSÃO
+TN: 42485
+FP: 3
+FN: 16
+TP: 55
