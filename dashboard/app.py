@@ -9,7 +9,7 @@ import streamlit as st
 API_URL = os.getenv("FRAUD_API_URL", "http://localhost:8000")
 
 st.set_page_config(page_title="FraudShield AI", page_icon="FraudShield", layout="wide")
-st.title("FraudShield AI 2.0")
+st.title("FraudShield AI")
 st.caption("Analise de risco de transacoes com XGBoost.")
 
 with st.sidebar:
