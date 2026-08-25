@@ -60,10 +60,23 @@ Detalhes sobre metodologia, artefatos, threshold e limitações estão em [`docs
 
 ## 🎥 Demonstração
 
+### Dashboard
+
+Interface Streamlit para envio de transações e visualização do risco calculado pelo modelo.
+
+![FraudShield AI Dashboard](docs/images/dashboard.png)
+
+### API — Swagger
+
+A API também pode ser explorada diretamente através da documentação interativa do FastAPI.
+
+![FraudShield AI Swagger](docs/images/swagger.png)
+
 O FraudShield AI expõe o modelo através de uma API REST construída com FastAPI.
 
 ```text
 Cliente
+
    │
    │ POST /predictions/fraud
    ▼
