@@ -17,6 +17,7 @@ RUN pip install --no-cache-dir --upgrade pip \
 
 # Código da aplicação
 COPY src ./src
+COPY dashboard ./dashboard
 
 # Artifact do modelo
 COPY artifacts ./artifacts
@@ -25,4 +26,4 @@ COPY artifacts ./artifacts
 EXPOSE 8000
 
 # Inicialização da aplicação
-CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "fraud_detection.main:app", "--app-dir", "src", "--host", "0.0.0.0", "--port", "8000"]

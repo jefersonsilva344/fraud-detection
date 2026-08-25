@@ -1,15 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "fraudshield-ai"
+version = "2.0.0"
+description = "Financial Fraud Detection API"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "numpy",
+    "pandas",
+    "pydantic",
+    "requests",
+    "scikit-learn",
+    "scipy",
+    "streamlit",
+    "uvicorn",
+    "xgboost",
+]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
 addopts = "-ra"
 
+
 [tool.coverage.run]
-source = ["src.api"]
+source = ["src/fraud_detection"]
 branch = true
+
 
 [tool.coverage.report]
 show_missing = true
 skip_empty = true
 fail_under = 80
+
 
 [tool.coverage.html]
 directory = "htmlcov"

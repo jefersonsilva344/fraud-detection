@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 from xgboost import XGBClassifier
 
-from src.inference.model_loader import ModelLoader
+from fraud_detection.infrastructure.ml.model_loader import ModelLoader
 
 
 # ============================================================

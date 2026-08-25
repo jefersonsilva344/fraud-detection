@@ -31,7 +31,7 @@ while ($attempt -lt $maxAttempts) {
 
     try {
         $response = Invoke-WebRequest `
-            -Uri "http://localhost:8000/health" `
+            -Uri "http://localhost:8000/" `
             -Method GET `
             -TimeoutSec 2
 

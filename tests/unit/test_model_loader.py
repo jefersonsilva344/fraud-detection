@@ -1,8 +1,10 @@
+import json
 from pathlib import Path
 
+import pytest
 from xgboost import XGBClassifier
 
-from src.inference.model_loader import ModelLoader
+from fraud_detection.infrastructure.ml.model_loader import ModelLoader
 
 
 def test_model_loader_loads_model():
@@ -99,3 +101,67 @@ def test_artifacts_exist():
 
     assert model_path.stat().st_size > 0
     assert metadata_path.stat().st_size > 0
+
+
+@pytest.mark.parametrize(
+    ("metadata", "error_message"),
+    [
+        ({}, "Campos obrigatórios"),
+        (
+            {
+                "model_type": "RandomForestClassifier",
+                "model_format": "xgboost_json",
+                "target": "Class",
+                "features": ["Time"],
+                "threshold": 0.5,
+            },
+            "model_type",
+        ),
+        (
+            {
+                "model_type": "XGBClassifier",
+                "model_format": "xgboost_json",
+                "target": "Class",
+                "features": ["Time", "Time"],
+                "threshold": 0.5,
+            },
+            "strings únicas",
+        ),
+        (
+            {
+                "model_type": "XGBClassifier",
+                "model_format": "xgboost_json",
+                "target": "Class",
+                "features": ["Time"],
+                "threshold": True,
+            },
+            "Threshold inválido",
+        ),
+    ],
+)
+def test_model_loader_rejects_invalid_metadata(
+    tmp_path: Path,
+    metadata: dict,
+    error_message: str,
+):
+    model_path = tmp_path / "model.json"
+    metadata_path = tmp_path / "metadata.json"
+    model_path.write_text("{}", encoding="utf-8")
+    metadata_path.write_text(json.dumps(metadata), encoding="utf-8")
+
+    loader = ModelLoader(
+        model_path=model_path,
+        metadata_path=metadata_path,
+    )
+
+    with pytest.raises(ValueError, match=error_message):
+        loader.load()
+
+
+def test_model_loader_does_not_expose_mutable_metadata():
+    loader = ModelLoader().load()
+
+    metadata = loader.get_metadata()
+    metadata["features"].append("unexpected")
+
+    assert "unexpected" not in loader.get_features()

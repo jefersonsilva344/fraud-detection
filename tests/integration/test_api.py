@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from src.api.main import app
+from fraud_detection.main import app
 
 
 client = TestClient(app)
@@ -8,12 +8,12 @@ client = TestClient(app)
 
 def create_transaction():
     """
-    Cria uma transação válida com as 30 features.
+    Cria uma transação válida com as 30 features
+    esperadas pelo modelo.
     """
 
-    transaction = {
+    return {
         "Time": 0.0,
-
         "V1": -1.359807,
         "V2": -0.072781,
         "V3": 2.536347,
@@ -42,16 +42,13 @@ def create_transaction():
         "V26": -0.189115,
         "V27": 0.133558,
         "V28": -0.021053,
-
         "Amount": 149.62,
     }
-
-    return transaction
 
 
 def test_root():
     """
-    Testa o endpoint principal.
+    Testa o endpoint principal da nova API.
     """
 
     response = client.get("/")
@@ -60,31 +57,7 @@ def test_root():
 
     data = response.json()
 
-    assert data["service"] == (
-        "Fraud Detection API"
-    )
-
     assert data["status"] == "online"
-
-
-def test_prediction_health():
-    """
-    Testa o endpoint de saúde do modelo.
-    """
-
-    response = client.get(
-        "/predictions/health"
-    )
-
-    assert response.status_code == 200
-
-    data = response.json()
-
-    assert data["status"] == "ok"
-    assert data["model"] == "XGBoost"
-    assert data["target"] == "Class"
-    assert data["features"] == 30
-    assert data["threshold"] == 0.66275984
 
 
 def test_prediction_endpoint():
@@ -95,38 +68,37 @@ def test_prediction_endpoint():
     transaction = create_transaction()
 
     response = client.post(
-        "/predictions/",
-        json=transaction,
+        "/predictions/fraud",
+        json={
+            "features": transaction,
+        },
     )
 
     assert response.status_code == 200
 
     data = response.json()
 
-    assert "fraud_probability" in data
     assert "is_fraud" in data
+    assert "risk_score" in data
+    assert "risk_percentage" in data
     assert "threshold" in data
-
-    assert 0 <= data[
-        "fraud_probability"
-    ] <= 1
 
     assert isinstance(
         data["is_fraud"],
-        bool
+        bool,
     )
 
-    assert data[
-        "threshold"
-    ] == 0.66275984
+    assert 0 <= data["risk_score"] <= 1
+
+    assert 0 <= data["risk_percentage"] <= 100
+
+    assert 0 < data["threshold"] < 1
 
 
 def test_prediction_rejects_missing_feature():
     """
-    Testa validação Pydantic.
-
-    Uma feature obrigatória ausente
-    deve retornar HTTP 422.
+    Testa rejeição de uma transação sem uma
+    feature obrigatória.
     """
 
     transaction = create_transaction()
@@ -134,8 +106,10 @@ def test_prediction_rejects_missing_feature():
     del transaction["V1"]
 
     response = client.post(
-        "/predictions/",
-        json=transaction,
+        "/predictions/fraud",
+        json={
+            "features": transaction,
+        },
     )
 
     assert response.status_code == 422
@@ -143,18 +117,18 @@ def test_prediction_rejects_missing_feature():
 
 def test_prediction_rejects_extra_feature():
     """
-    Testa extra='forbid' do schema.
+    Testa rejeição de uma feature desconhecida.
     """
 
     transaction = create_transaction()
 
-    transaction[
-        "feature_inexistente"
-    ] = 123
+    transaction["feature_inexistente"] = 123
 
     response = client.post(
-        "/predictions/",
-        json=transaction,
+        "/predictions/fraud",
+        json={
+            "features": transaction,
+        },
     )
 
     assert response.status_code == 422
@@ -162,7 +136,7 @@ def test_prediction_rejects_extra_feature():
 
 def test_prediction_rejects_negative_amount():
     """
-    Amount não pode ser negativo.
+    Testa rejeição de Amount negativo.
     """
 
     transaction = create_transaction()
@@ -170,8 +144,10 @@ def test_prediction_rejects_negative_amount():
     transaction["Amount"] = -100
 
     response = client.post(
-        "/predictions/",
-        json=transaction,
+        "/predictions/fraud",
+        json={
+            "features": transaction,
+        },
     )
 
     assert response.status_code == 422

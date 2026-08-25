@@ -62,6 +62,8 @@ Desktop.ini
 # Datasets locais — NÃO versionar
 data/raw/
 data/processed/
+data/*.db
+data/*.sqlite*
 
 # Datasets
 *.csv
